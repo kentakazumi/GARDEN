@@ -1,0 +1,1 @@
+$('#likes_buttons_<%= @post_image.id %>').html("<%= j(render partial: 'favorites/favorite-btn', locals: {post_image: @post_image}) %>");

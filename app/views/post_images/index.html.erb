@@ -1,0 +1,21 @@
+
+<h1>投稿一覧</h1>
+<div class="container">
+  <div class="row">
+    <% @post_images.each do |post_image| %>
+    <div class="col-lg-6 cold-md-6 mb-4 pt-3">
+      <p　class= "text-center">タイトル:<%= link_to post_image.title, post_image_path(post_image.id) %></p>
+      <div id="likes_buttons_<%= post_image.id %>">
+        <%= render partial: 'favorites/favorite-btn',locals: {post_image: post_image} %>
+      </div>
+      <p><%= attachment_image_tag post_image, :image, style: "width:100%", fallback: "no_image.jpg" %></p>
+      <p>投稿時間:<%= post_image.created_at.strftime("%Y-%m-%d %H:%M")%>
+      　　投稿者<%= link_to post_image.user.name, user_path(post_image.user_id)%>
+      </P>
+
+    </div>
+    <% end %>
+  </div>
+
+</div>
+

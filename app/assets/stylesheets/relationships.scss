@@ -1,0 +1,26 @@
+// Place all the styles related to the relationships controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.btn-twitter-follow {
+  text-decoration: none;
+  background-image: linear-gradient(#fff,#f5f8fa);
+  border: 1px solid #e6ecf0;
+  border-radius: 4px;
+  color: #393e42;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 14px;
+  position: relative;
+ }
+
+.btn-twitter-follow i {
+  color: #1da1f3;
+}
+
+.btn-twitter-follow:hover {
+  background-color: #e6ecf0;
+  background-image: linear-gradient(#fff,#e6ecf0);
+  border-color: #e6ecf0;
+}

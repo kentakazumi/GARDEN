@@ -1,0 +1,24 @@
+    <h1><%= @user.name %>のページ</h>
+    <p>follows<%= link_to " #{@user.follower.count}", user_followsings_path(@user) %></p>
+    <p>followers:<%= link_to " #{@user.followed.count}", user_followers_path(@user) %></p>
+                <% if current_user.following?(@user) %>
+                <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-info" %>
+                <% else %>
+                <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-success" %>
+                <% end %>
+              
+    <div class= "container">
+        <div class= "row">
+             <div class="col-lg-4 cold-md-2 mb-4 pt-3">
+                 <% @post_images.each do |post_image| %>
+                  <div id="likes_buttons_<%= post_image.id %>">
+                 <%= render partial: 'favorites/favorite-btn',locals: {post_image: post_image} %>
+                 </div>
+                 <p>投稿時間<%= post_image.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+                 <p><%= attachment_image_tag post_image,:image, :fill, 600, 500, format: 'jpeg', fallback: "no_image.jpg" %></P>
+                 <p>題名<%= link_to post_image.title, post_image_path(post_image) %></p>
+                 <p>説明<%= post_image.body %></p>
+                 <% end %>
+            </div>
+        </div>
+    </div>

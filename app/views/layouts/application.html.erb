@@ -10,6 +10,35 @@
   </head>
 
   <body>
+     <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <div class="container">
+            <a class="navbar-brand" href="/"><span>PHOTOGARDEN</span></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                   <li><%= link_to "HOME",root_path, class: 'nav-link text-light' %></li>
+                   <li><%= link_to "MYPAGE",user_path(current_user), class: 'nav-link text-light' %></li>
+                   <li><%= link_to "PHOTO",post_images_path, class: 'nav-link text-light' %></li>
+                   <li><%= link_to 'POST', new_post_image_path, class: 'nav-link text-light'%></li>
+                   <li><%= link_to "LOGOUT",destroy_user_session_path, class: 'nav-link text-light', method: :delete %></li>
+                 <% else %>
+                   <li><%= link_to "HOME",root_path, class: 'fas fa-home nav-link text-light' %></li>
+                   <li><%= link_to "ABOUT",home_about_path, class: 'fas fa-link nav-link text-light' %></li>
+                   <li><%= link_to "SIGN UP", new_user_registration_path, class:"fas fa-user-plus nav-link text-light" %></li>
+                   <li><%= link_to "SIGN IN",user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

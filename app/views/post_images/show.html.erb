@@ -1,0 +1,13 @@
+
+<h1>投稿詳細ページ</h1>
+ <p>題名<%= @post_image.title %></p>
+ <div id="likes_buttons_<%= @post_image.id %>">
+  <%= render partial: 'favorites/favorite-btn',locals: {post_image: @post_image} %>
+  </div>
+ <p><%= attachment_image_tag @post_image, :image, size: "500x400", fallback: "no_image.jpg" %></p>
+  <p>投稿時間:<%= @post_image.created_at.strftime("%Y-%m-%d %H:%M")%></p>
+ <p><%= @post_image.body %></p>
+  <li id="comments_area">
+   <%= render partial: 'comments/index',locals: {post_image: @post_image } %>
+  </li>
+   <%= render partial: 'comments/form',locals: {post_image: @post_image, comment: @comment} %>

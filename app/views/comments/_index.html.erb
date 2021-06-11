@@ -1,0 +1,13 @@
+
+
+
+<div class="comments">
+   <% @comment.each do |post_image_comment| %>
+
+   <%= post_image_comment.comment %>
+   <% if current_user.id == post_image_comment.user.id %>
+   <%= link_to "削除", post_image_comment_path(comment.post_image, comment), method: :delete , remote: true %>
+   <% end %>
+   <nav><%= post_image_comment.user.name %></nav>
+   <% end %>
+</div>
