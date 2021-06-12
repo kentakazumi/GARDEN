@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :book
+  belongs_to :post_image
   validates :comment, presence: true
 end

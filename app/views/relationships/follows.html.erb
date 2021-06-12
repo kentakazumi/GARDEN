@@ -1,8 +1,8 @@
 <div class="col-md-8 offset-md-1">
   <table class="table">
-    <h1>FllowerUser</h1>
-     <% if  @followers.empty? %>
-         <span>ユーザーはいません</span>
+    <h1>FollowUser</h1>
+     <% if @followings.empty? %>
+     <span>ユーザーはいません</span>
       <% else%>
     <thead>
       <tr>
@@ -13,17 +13,17 @@
     </thead>
     <tboy>
 
-
     <div class="col-md-8 offset-md-1">
-      <% @followers.each do |user| %>
+      <% @followings.each do |user| %>
         <tr>
+
           <th>  <%= user.name %> </td>
           <th><%= "フォロー数: #{user.follower.count}" %></th>
           <th><%= "フォロワー数: #{user.followed.count}" %></th>
           <th><%= link_to "Show", user_path(user.id) %></th>
         </tr>
     </div>
-    <% end %>
-    <% end %>
+       <% end %>
+     <% end %>
   </table>
 </div>

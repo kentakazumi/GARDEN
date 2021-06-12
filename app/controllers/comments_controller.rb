@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create
-    @post_image = post_image.find(params[:post_image_id])
+    @post_image = PostImage.find(params[:post_image_id])
     @comment = Comment.new(comment_params)
     @comment.post_image_id = @post_image.id
     @comment.user_id = current_user.id
@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @post_image = post_image.find(params[:post_image_id])
+    @post_image = PostImage.find(params[:post_image_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
     render :index
