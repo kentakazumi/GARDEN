@@ -12,7 +12,9 @@
       <p>投稿時間:<%= post_image.created_at.strftime("%Y-%m-%d %H:%M")%>
       　　投稿者<%= link_to post_image.user.name, user_path(post_image.user_id)%>
       </P>
-
+        <% post_image.tags.each do |tag| %>
+          <p>#<%= tag.tag_name %></p>
+        <% end %>
     </div>
     <% end %>
   </div>

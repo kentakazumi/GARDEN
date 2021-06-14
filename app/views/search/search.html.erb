@@ -1,0 +1,8 @@
+ <% @post_images.each do |post_image| %>
+  <p><%= attachment_image_tag post_image, :image, style: "width:100%", fallback: "no_image.jpg" %></p>
+  <p>投稿時間:<%= post_image.created_at.strftime("%Y-%m-%d %H:%M")%>
+     投稿者<%= link_to post_image.user.name, user_path(post_image.user_id)%>
+  </P><% post_image.tags.each do |tag| %>
+  <p>#<%= tag.tag_name %></p>
+  <% end %>
+  <% end %>
