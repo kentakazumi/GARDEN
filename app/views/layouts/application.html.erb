@@ -5,45 +5,49 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-         <div class="container">
-            <a class="navbar-brand" href="/"><span>PHOTOGARDEN</span></a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav ml-auto">
-              <% if user_signed_in? %>
-                  <li>検索</li>
-　　　　　　　　<%= form_with url: post_images_search_path, local: true do |f| %>
-　　　　　　　　<p><%= f.text_field :tag_names %></p>
-　　　　　　　　 <%= f.submit '検索' %>
-                  <% end %>
-                  <li><%= link_to "HOME",root_path, class: 'nav-link text-light' %></li>
-                  <li><%= link_to "MYPAGE",user_path(current_user), class: 'nav-link text-light' %></li>
-                  <li><%= link_to "PHOTO",post_images_path, class: 'nav-link text-light' %></li>
-                  <li><%= link_to 'POST', new_post_image_path, class: 'nav-link text-light'%></li>
-                  <li><%= link_to "LOGOUT",destroy_user_session_path, class: 'nav-link text-light', method: :delete %></li>
-                  <% else %>
-                  <li><%= link_to "HOME",root_path, class: 'fas fa-home nav-link text-light' %></li>
-                  <li><%= link_to "ABOUT",home_about_path, class: 'fas fa-link nav-link text-light' %></li>
-                  <li><%= link_to "SIGN UP", new_user_registration_path, class:"fas fa-user-plus nav-link text-light" %></li>
-                  <li><%= link_to "SIGN IN",user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-      </nav>
-    </header>
+     <header class='navbar nav-fixed-top nav-padding'>
+        <nav class='nav navbar-nav navbar-left'>
+         <h2>PHOTOGARDEN</h2>
+        </nav>
+        <nav class='nav navbar-nav navbar-right'>
+         <ul class="global-nav">
+             <% if user_signed_in? %>
+               <li class='nav-item' >
+                   <%= form_with url: post_images_search_path, local: true do |f| %>
+                   <%= f.text_field :tag_names %>
+                      <%= f.submit '検索' %>
+                    <% end %>
+               </li>
+               <li class='nav-item' ><%= link_to "HOME",root_path  %></li>
+               <li class='nav-item' ><%= link_to "MYPAGE",user_path(current_user)  %></li>
+               <li class='nav-item' ><%= link_to "GALARY",post_images_path %></li>
+               <li class='nav-item' ><%= link_to 'POST', new_post_image_path %></li>
+               <% if unchecked_notifications.any? %>
+                 <i class="fa fa-circle" style="color: gold;"></i>
+               <% end %>
+               <li class='nav-item' ><%= link_to "NOTICE", notifications_path %></li>
+               <li class='nav-item' ><%= link_to "LOGOUT",destroy_user_session_path, method: :delete %></li>
+              <% else %>
+               <li class='nav-item' ><%= link_to "HOME",root_path %></li>
+               <li class='nav-item' ><%= link_to "ABOUT",home_about_path %></li>
+               <li class='nav-item' ><%= link_to "SIGN UP", new_user_registration_path %></li>
+               <li class='nav-item' ><%= link_to "LOG IN",user_session_path  %></li>
+            <% end %>
+         </ul>
+       </nav>
+     </header>
     <%= yield %>
   </body>
+<footer>
+  <small>© 2021 PHOTOGARDEN inc.</small>
+</footer>
 </html>
+
+
+
+

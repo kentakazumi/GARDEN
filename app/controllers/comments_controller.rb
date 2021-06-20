@@ -4,8 +4,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.post_image_id = @post_image.id
     @comment.user_id = current_user.id
-    @comment.save
-    render :index
+    if @comment.save
+       commented = User.find(PostImage.find(@comment.post_image_id).user_id)
+       @comment.create_notification_comment(current_user, commented, @comment.post_image_id)
+       render :index
+    end
   end
 
   def destroy

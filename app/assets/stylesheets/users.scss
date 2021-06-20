@@ -1,3 +1,32 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h2.strong {
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+
+  & span {
+    font-size: 0.9rem;
+    color: #696969;
+  }
+}
+
+.flex-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-box {
+  text-align: center;
+}
+
+h1{
+  padding: 5rem;
+}
+
+.follow {
+  font-size: 2rem;
+}

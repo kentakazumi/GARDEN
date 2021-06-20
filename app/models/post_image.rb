@@ -5,10 +5,18 @@ class PostImage < ApplicationRecord
      has_many :comments, dependent: :destroy
      has_many :post_image_tag_relations, dependent: :destroy
      has_many :tags, through: :post_image_tag_relations
+     has_many :notifications, dependent: :destroy
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-
+  def create_notification_by(current_user)
+        notification = current_user.active_notifications.new(
+          post_image_id: id,
+          visited_id: user_id,
+          action: "favorite"
+        )
+        notification.save if notification.valid?
+  end
     def save_tags(tag_list)
       tag_list.each do |tag|
       # 受け取った値を小文字に変換して、DBを検索して存在しない場合は

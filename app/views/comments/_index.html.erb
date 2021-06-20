@@ -1,9 +1,13 @@
 <div class="comments">
+   <p　class="text-center">コメント一覧</p>
    <% post_image.comments.each do |comment| %>
-   <%= comment.comment %>
-   <% if current_user.id == comment.user.id %>
-   <%= link_to "削除", post_image_comment_path(comment.post_image, comment), method: :delete , remote: true %>
-   <% end %>
-   <nav><%= comment.user.name %></nav>
+   <div class='comment'>
+      <%= comment.user.name %>
+      <%= comment.comment %>
+      <% if current_user.id == comment.user.id %>
+        <%= link_to "削除", post_image_comment_path(comment.post_image, comment), method: :delete , remote: true %>
+      <% end %>
+   </div>
+
    <% end %>
 </div>

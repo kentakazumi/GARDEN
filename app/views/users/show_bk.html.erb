@@ -1,0 +1,45 @@
+    <h1><%= @user.name %>のページ</h>
+    <p>follows<%= link_to " #{@user.follower.count}", user_followsings_path(@user) %></p>
+    <p>followers:<%= link_to " #{@user.followed.count}", user_followers_path(@user) %></p>
+                <% if current_user.following?(@user) %>
+                <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-info" %>
+                <% else %>
+                <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-success" %>
+                <% end %>
+              
+
+　<!--<%# @post_images.each do |post_image| %>-->
+ <!-- <div class="card" style="width: 70rem;">-->
+ <!--   <svg class="bd-placeholder-img card-img-top" width="100%" height="800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%"></text></svg>-->
+ <!--   <div class="card-body">-->
+ <!--     <p class="card-title">題名<%#= link_to post_image.title, post_image_path(post_image) %></p>-->
+ <!--     <p>投稿時間<%#= post_image.created_at.strftime("%Y-%m-%d %H:%M") %></p>-->
+ <!--     <%# post_image.tags.each do |tag| %>-->
+ <!--     <div id="likes_buttons_<%#= post_image.id %>">-->
+ <!--       <%#= render partial: 'favorites/favorite-btn',locals: {post_image: post_image} %>-->
+ <!--     </div>-->
+ <!--　　 <p>#<%#= tag.tag_name %></p>-->
+ <!--    <%# end %>-->
+ <!--   </div>-->
+ <!-- </di>-->
+ <!-- <%# end %>-->
+
+  <div class="card" style="width: 18rem;">
+  <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+                 <%# @post_images.each do |post_image| %>
+                 <!--<p><%#= attachment_image_tag post_image,:image, :fill, 600, 500, format: 'jpeg', fallback: "no_image.jpg" %></P>-->
+                 <%# end %>

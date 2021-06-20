@@ -9,9 +9,13 @@ class User < ApplicationRecord
    has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
    has_many :following_user, through: :follower, source: :followed
    has_many :follower_user, through: :followed, source: :follower
+   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
-  def follow(user_id)
-    follower.create(followed_id: user_id)
+  def follow(followed)
+    follower.create(followed_id: followed.id)
+     #通知の作成
+     create_notification_follow(self, followed)
   end
 
 
@@ -23,5 +27,12 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
+  def create_notification_follow(follower, followed)
+        notification = follower.active_notifications.new(
+          visited_id: followed.id,
+          action: "follow"
+        )
+        notification.save if notification.valid?
+  end
 
 end

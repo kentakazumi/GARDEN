@@ -1,28 +1,41 @@
-    <h1><%= @user.name %>のページ</h>
-    <p>follows<%= link_to " #{@user.follower.count}", user_followsings_path(@user) %></p>
-    <p>followers:<%= link_to " #{@user.followed.count}", user_followers_path(@user) %></p>
-                <% if current_user.following?(@user) %>
-                <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-info" %>
-                <% else %>
-                <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-success" %>
-                <% end %>
-              </th>
-            </tr>
-    <div class= "container">
-        <div class= "row">
-             <div class="col-lg-4 cold-md-2 mb-4 pt-3">
-                 <% @post_images.each do |post_image| %>
-                    <div id="likes_buttons_<%= post_image.id %>">
-                      <%= render partial: 'favorites/favorite-btn',locals: {post_image: post_image} %>
-                    </div>
-                    <p>投稿時間<%= post_image.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-                    <p><%= attachment_image_tag post_image,:image, :fill, 600, 500, format: 'jpeg', fallback: "no_image.jpg" %></P>
-                    <p>題名<%= link_to post_image.title, post_image_path(post_image) %></p>
-                    <p>説明<%= post_image.body %></p>
-                    <% post_image.tags.each do |tag| %>
-  　　　　　　　  　   　　　　　　<p>#<%= tag.tag_name %></p>
-　　　　　　　    　<% end %>
-                 <% end %>
-            </div>
+<h1 class= "text-center"><%= @user.name %>さんのページ</h>
+<div class="follow">
+  <span clas="textcenter">follows<%= link_to " #{@user.follower.count}", user_followsings_path(@user) %></span>
+  <span class="text-center">followers:<%= link_to " #{@user.followed.count}", user_followers_path(@user) %></span>
+  <% if current_user.following?(@user) %>
+  <span class="text-center"><%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-info" %></span>
+  <% else %>
+  <span class="text-center"><%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-success" %></span>
+  <% end %>
+</div>
+
+<main class="mb-auto">
+  <div class="card-list-container py-5">
+    <% @post_images.each do |post_image| %>
+    <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <a href="#">
+        <%= attachment_image_tag post_image, :image, format: 'jpeg', class: "card-img-top" %>
+      </a>
+      <div class="card-body">
+        <h2 class="card-title strong">
+          <a class="text-dark" href="/post_images/741">
+            <%= link_to post_image.title, post_image_path(post_image) %>
+          </a>
+          <span>投稿時間 <%= post_image.created_at.strftime("%Y-%m-%d %H:%M") %></span>
+        </h2>
+        <div class="content-box">
+          <p class="card-text"><%= post_image.body %></p>
         </div>
+        <div class="flex-box">
+          <% post_image.tags.each do |tag| %>
+            <span>#<%= tag.tag_name %></span>
+          <% end %>
+          <span id="likes_buttons_<%= post_image.id %>">
+            <%= render partial: 'favorites/favorite-btn',locals: {post_image: post_image} %>
+          </spna>
+        </div>
+      </div>
     </div>
+    <% end %>
+  </div>
+</main>

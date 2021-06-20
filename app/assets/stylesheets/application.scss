@@ -17,4 +17,88 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import url('https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Tangerine&family=Viaoda+Libre&display=swap');
+
+ @import './homes';
+ @import './users';
+ @import './post_images';
+
+body {
+ margin: 0;
+ background-color: #cccccc;
+ line-height: 2;
+}
+
+ul {
+ margin: 0;
+ font-family: 'Tangerine', cursive;
+ font-family: 'Viaoda Libre', cursive;
+}
+
+a {
+ text-decoration: none;
+}
+
+a:hover {
+ text-decoration: underline;
+}
+
+header {
+ height: 90px;
+ display: flex;
+
+}
+
+.global-nav {
+  display: flex;
+  text-align: right;
+
+
+}
+
+.global-nav li {
+ margin: 0 20px;
+ font-size: 18px;
+ list-style: none;
+}
+
+.global-nav li a {
+ color: #ffffff;
+ text-align: right;
+
+}
+
+.global-nav li a:hover {
+ border-bottom: 2px solid #ffffff;
+ padding-bottom: 8px;
+ text-decoration: none;
+}
+
+footer {
+ text-align: center;
+ color: #ffffff;
+ padding: 20px 0;
+}
+
+footer small {
+ font-size: 12px;
+}
+
+nav {
+
+   text-align: right;
+}
+
+.nav-padding{
+ padding: 8px 150px;
+}
+h2 {
+ font-family: 'Tangerine', cursive;
+ font-family: 'Viaoda Libre', cursive;
+}
+h3 {
+ font-size: 1.2em;
+ margin-bottom: 30px;
+}
 

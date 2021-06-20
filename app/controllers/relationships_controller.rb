@@ -2,7 +2,7 @@ class RelationshipsController < ApplicationController
 
    before_action :set_user, except: [:follow, :unfollow]
   def follow
-    current_user.follow(params[:id])
+    current_user.follow(User.find(params[:id]))
     redirect_back(fallback_location: root_path)
   end
 
@@ -20,8 +20,6 @@ class RelationshipsController < ApplicationController
   def followers
     @followers = @user.follower_user
   end
-
-
 
   private
   def set_user
