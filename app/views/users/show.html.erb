@@ -1,14 +1,18 @@
-<h1 class= "text-center"><%= @user.name %>さんのページ</h>
-<div class="follow">
-  <span clas="textcenter">follows<%= link_to " #{@user.follower.count}", user_followsings_path(@user) %></span>
-  <span class="text-center">followers:<%= link_to " #{@user.followed.count}", user_followers_path(@user) %></span>
-  <% if current_user.following?(@user) %>
-  <span class="text-center"><%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-info" %></span>
-  <% else %>
-  <span class="text-center"><%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-success" %></span>
-  <% end %>
-</div>
+<% if user_signed_in? && @user == current_user %>
+  <h1 class= "text-center">MYPAGE</h1>
+<% else %>
+  <h1 class="text-center"> <%= @user.name %>さんのページ</h1>
+<% end %>
 
+<div class="follow">
+  <span>follows:<%= link_to " #{@user.follower.count}", user_followsings_path(@user) %></span>
+  <span>followers:<%= link_to " #{@user.followed.count}", user_followers_path(@user) %></span>
+  <% if current_user.following?(@user) %>
+    <span><%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-info" %></span>
+  <% else %>
+    <span><%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-success" %></span>
+  <% end %>
+</span>
 <main class="mb-auto">
   <div class="card-list-container py-5">
     <% @post_images.each do |post_image| %>

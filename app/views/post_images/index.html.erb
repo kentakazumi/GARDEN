@@ -1,23 +1,40 @@
 
-<h1>投稿一覧</h1>
 <div class="container">
-  <div class="row">
-    <% @post_images.each do |post_image| %>
-    <div class="col-lg-6 cold-md-6 mb-4 pt-3">
-      <p　class= "text-center">タイトル:<%= link_to post_image.title, post_image_path(post_image.id) %></p>
-      <div id="likes_buttons_<%= post_image.id %>">
-        <%= render partial: 'favorites/favorite-btn',locals: {post_image: post_image} %>
-      </div>
-      <p><%= attachment_image_tag post_image, :image, style: "width:100%", fallback: "no_image.jpg" %></p>
-      <p>投稿時間:<%= post_image.created_at.strftime("%Y-%m-%d %H:%M")%>
-      　　投稿者<%= link_to post_image.user.name, user_path(post_image.user_id)%>
-      </P>
-        <% post_image.tags.each do |tag| %>
-          <p>#<%= tag.tag_name %></p>
-        <% end %>
-    </div>
-    <% end %>
+  <div class="text-center">
+    <h1>GALLERY</h1>
   </div>
 
+　<div class="d-flex justify-content-between flex-wrap">
+    <% @post_images.each do |post_image| %>
+      <div class="card" style="width: 20rem; height: 27rem;">
+        <div class="card-img-wrap d-flex">
+          <%= attachment_image_tag post_image, :image,fallback: "no_image.jpg", class: "card-image align-self-start" %>
+        </div>
+        <div class="card-body">
+          <p class="card-title text-center"><%= link_to post_image.title, post_image_path(post_image.id) %></p>
+          <p  class="card-text">
+            <% post_image.tags.each do |t| %>
+              <p style="display: inline-flex;">#<%= t.tag_name.truncate(25) %></p>
+            <% end %>
+          </p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <%= post_image.created_at.strftime("%Y-%m-%d %H:%M")%>
+          <span><i class="fas fa-user"></i><%= link_to post_image.user.name, user_path(post_image.user_id)%></span>
+          <small class="text-muted">
+            <div id="likes_buttons_<%= post_image.id %>">
+            <%= render partial: 'favorites/favorite-btn',locals: {post_image: post_image} %>
+          </div>
+          </small>
+        </div>
+      </div>
+  　<% end %>
+　</div>
 </div>
+
+
+
+
+
+
 

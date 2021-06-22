@@ -11,7 +11,7 @@ class PostImage < ApplicationRecord
   end
   def create_notification_by(current_user)
         notification = current_user.active_notifications.new(
-          post_image_id: id,
+          post_id: id,
           visited_id: user_id,
           action: "favorite"
         )
