@@ -27,6 +27,7 @@ class PostImagesController < ApplicationController
       end
     else
       @post_images = PostImage.all
+      @post_images = PostImage.page(params[:page]).reverse_order
     end
   end
 
@@ -75,8 +76,8 @@ class PostImagesController < ApplicationController
      end
      redirect_to post_images_path(tag_ids: tag_ids)
    end
-   
-   
+
+
     def create_notification_by(current_user)
       notification = current_user.active_notifications.new(
         post_image_id: id,

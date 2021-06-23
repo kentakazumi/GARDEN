@@ -1,14 +1,13 @@
-
-<div class="container">
+<div class="container-md ">
   <div class="text-center">
     <h1>GALLERY</h1>
   </div>
 
-　<div class="d-flex justify-content-between flex-wrap">
+　<div class="d-flex flex-row flex-wrap ">
     <% @post_images.each do |post_image| %>
       <div class="card" style="width: 20rem; height: 27rem;">
         <div class="card-img-wrap d-flex">
-          <%= attachment_image_tag post_image, :image,fallback: "no_image.jpg", class: "card-image align-self-start" %>
+          <%= attachment_image_tag post_image, :image, class: "card-image align-self-start" %>
         </div>
         <div class="card-body">
           <p class="card-title text-center"><%= link_to post_image.title, post_image_path(post_image.id) %></p>
@@ -31,6 +30,7 @@
   　<% end %>
 　</div>
 </div>
+<div class="paginate"><%= paginate @post_images %></div>
 
 
 

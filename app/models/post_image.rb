@@ -1,17 +1,22 @@
 class PostImage < ApplicationRecord
    belongs_to :user
    attachment :image
-     has_many :favorites, dependent: :destroy
-     has_many :comments, dependent: :destroy
-     has_many :post_image_tag_relations, dependent: :destroy
-     has_many :tags, through: :post_image_tag_relations
-     has_many :notifications, dependent: :destroy
+   has_many :favorites, dependent: :destroy
+   has_many :comments, dependent: :destroy
+   has_many :post_image_tag_relations, dependent: :destroy
+   has_many :tags, through: :post_image_tag_relations
+   has_many :notifications, dependent: :destroy
+   validates :image, presence: true
+   validates :title, presence: true
+   validates :body, presence: true,length: { maximum: 200}
+
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
   def create_notification_by(current_user)
         notification = current_user.active_notifications.new(
-          post_id: id,
+          post_image_id: id,
           visited_id: user_id,
           action: "favorite"
         )
