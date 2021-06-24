@@ -19,3 +19,19 @@
 //= require turbolinks
 //= require_tree .
 
+// 画像スライダー
+$(document).on('turbolinks:load', function(){
+  console.log('test')
+  $("#images").skippr({
+    transition : 'slide',
+    speed : 900,
+    easing : 'easeOutQuart',
+    navType : 'bubble',
+    childrenElementType : 'div',
+    arrows : true,
+    autoPlay : true,
+    autoPlayDuration : 2000,
+    keyboardOnAlways : true,
+    hidePrevious : false
+  });
+});

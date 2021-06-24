@@ -110,3 +110,145 @@ h3 {
 .paginate {
  padding-left: 57rem;
 }
+
+#image-sliders {
+  height: 100%;
+}
+
+.image1 {
+  width: 100%;
+  height: 100%;
+  background-image: image-url("watering-can-3630281_1920.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  font-size: 85px;
+}
+
+.image1 span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: white;
+
+  }
+
+  .signupbtn{
+   font-size: 2rem;
+   border-right: solid;
+   padding-right: 10px;
+   color: #00ced1;
+   text-align: center;
+  }
+
+  .loginbtn {
+   font-size: 2rem;
+   color: #00ced1;
+   text-align: center;
+  }
+
+
+.image2 {
+  width: 100%;
+  height: 100%;
+  background-image: image-url("pepper-4186307_1920.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  font-size: 85px;
+}
+
+.image2 span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: white;
+  /*文字の装飾は省略*/
+
+  }
+
+
+.image3 {
+  width: 100%;
+  height: 100%;
+  background-image: image-url("garden-2179530_1920.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  font-size: 85px;
+}
+
+.image3 span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: white;
+
+  }
+
+
+
+.image4 {
+  width: 100%;
+  height: 100%;
+  background-image: image-url("PAK56_midorrinonakanobench_TP_V.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  font-size: 85px;
+}
+
+.image4 span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: white;
+  /*文字の装飾は省略*/
+
+  }
+
+
+.image5 {
+  width: 100%;
+  height: 100%;
+  background-image: image-url("1670322_s.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  font-size: 85px;
+}
+
+.image5 span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: white;
+
+  }
+
+
