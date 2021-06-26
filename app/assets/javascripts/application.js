@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', function(){
   console.log('test')
   $("#images").skippr({
     transition : 'slide',
-    speed : 900,
+    speed : 2000,
     easing : 'easeOutQuart',
     navType : 'bubble',
     childrenElementType : 'div',

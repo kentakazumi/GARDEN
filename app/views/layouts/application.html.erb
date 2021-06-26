@@ -9,38 +9,40 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-     <header class='navbar nav-fixed-top nav-padding'>
-        <nav class='nav navbar-nav navbar-left'>
-         <h2>PHOTOGARDEN</h2>
-        </nav>
-        <nav class='nav navbar-nav navbar-right'>
-         <ul class="global-nav">
-             <% if user_signed_in? %>
-               <li class='nav-item' >
-                   <%= form_with url: post_images_search_path, local: true do |f| %>
-                   <%= f.text_field :tag_names %>
-                      <%= f.submit '検索' %>
-                    <% end %>
-               </li>
-               <li class='nav-item' ><%= link_to "HOME",root_path  %></li>
-               <li class='nav-item' ><%= link_to "MYPAGE",user_path(current_user)  %></li>
-               <li class='nav-item' ><%= link_to "GALARY",post_images_path %></li>
-               <li class='nav-item' ><%= link_to 'POST', new_post_image_path %></li>
-               <% if unchecked_notifications.any? %>
-                 <i class="fa fa-circle" style="color: gold;"></i>
-               <% end %>
-               <li class='nav-item' ><%= link_to "NOTICE", notifications_path %></li>
-               <li class='nav-item' ><%= link_to "LOGOUT",destroy_user_session_path, method: :delete %></li>
-              <% else %>
-               <li class='nav-item' ><%= link_to "HOME",root_path %></li>
-               <li class='nav-item' ><%= link_to "ABOUT",home_about_path %></li>
-               <li class='nav-item' ><%= link_to "SIGN UP", new_user_registration_path %></li>
-               <li class='nav-item' ><%= link_to "LOG IN",user_session_path  %></li>
-            <% end %>
-         </ul>
-       </nav>
-     </header>
+<body>
+   <header class='navbar nav-fixed-top nav-padding'>
+     <nav class='nav navbar-nav navbar-left'>
+       <div class="title">
+         <h2><%= link_to "PHOTOGARDEN", root_path %></h2>
+       </div>
+      </nav>
+      <nav class='nav navbar-nav navbar-right'>
+       <ul class="global-nav">
+           <% if user_signed_in? %>
+             <li class='nav-item' >
+                 <%= form_with url: post_images_search_path, local: true do |f| %>
+                 <%= f.text_field :tag_names %>
+                    <%= f.submit '検索' %>
+                  <% end %>
+             </li>
+             <li class='nav-item' ><%= link_to "HOME",root_path  %></li>
+             <li class='nav-item' ><%= link_to "MYPAGE",user_path(current_user)  %></li>
+             <li class='nav-item' ><%= link_to "GALARY",post_images_path %></li>
+             <li class='nav-item' ><%= link_to 'POST', new_post_image_path %></li>
+             <% if unchecked_notifications.any? %>
+               <i class="fa fa-circle" style="color: gold;"></i>
+             <% end %>
+             <li class='nav-item' ><%= link_to "NOTICE", notifications_path %></li>
+             <li class='nav-item' ><%= link_to "LOGOUT",destroy_user_session_path, method: :delete %></li>
+            <% else %>
+             <li class='nav-item' ><%= link_to "HOME",root_path %></li>
+             <li class='nav-item' ><%= link_to "ABOUT",home_about_path %></li>
+             <li class='nav-item' ><%= link_to "SIGN UP", new_user_registration_path %></li>
+             <li class='nav-item' ><%= link_to "LOG IN",user_session_path  %></li>
+          <% end %>
+       </ul>
+      </nav>
+   </header>
     <%= yield %>
   </body>
 <footer>

@@ -1,7 +1,6 @@
-
-
-    <div class="post-detail py-5 bg-light">
-        <div class="card w-75 mx-auto mt-4 shadow-lg">
+<main class="mb-auto">
+    <div class="post-detail py-5">
+        <div class="card w-50 mx-auto mt-4 shadow-lg">
             <p><%= attachment_image_tag @post_image, :image, class: "image-size"  %></p>
             <div class="card-body">
                 <div class="row">
@@ -25,24 +24,21 @@
                                     <p style="float: right"><%= link_to "Edit", edit_post_image_path(@post_image.id),class:"btn btn-sm btn-success" %></p>
 　　　　　　　　　　　　　　　　　<% end %>
 　　　　　　　　　　　　　　　　</div>
-                           </span>
+                          　</span>
                         </div>
-
-                    </div>
+　　　　　　　　　　</div>
                 </div>
-                <hr>
                   <div class="comments card-text">
                       <h4 class="mt-3">コメント</h4>
                       <div class="" id="comments_area">
                         <%= render partial: 'comments/index',locals: {post_image: @post_image } %>
                       </div>
                   </div>
-                <hr>
                <%= render partial: 'comments/form',locals: {post_image: @post_image, comment: @comment} %>
              </div>
         </div>
     </div>
-
+ </main>
 
 
 

@@ -3,7 +3,6 @@
 <% else %>
   <h1 class="text-center"> <%= @user.name %>さんのページ</h1>
 <% end %>
-
 <div class="follow">
   <span>follows:<%= link_to " #{@user.follower.count}", user_followsings_path(@user) %></span>
   <span>followers:<%= link_to " #{@user.followed.count}", user_followers_path(@user) %></span>
@@ -14,34 +13,34 @@
       <span><%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-success" %></span>
   <% end %>
   <% end %>
-</span>
+</div>
 <main class="mb-auto">
   <div class="card-list-container py-5">
     <% @post_images.each do |post_image| %>
-    <div class="card w-50 mx-auto mt-4 shadow-lg">
-      <a href="#">
-        <%= attachment_image_tag post_image, :image, format: 'jpeg', class: "card-img-top" %>
-      </a>
-      <div class="card-body">
-        <h2 class="card-title strong">
-          <a class="text-dark" href="/post_images/741">
-           <h2><%= link_to post_image.title, post_image_path(post_image) %></h2>
-          </a>
-          <span>投稿時間 <%= post_image.created_at.strftime("%Y-%m-%d %H:%M") %></span>
-        </h2>
-        <div class="content-box">
-          <p class="card-text"><%= post_image.body %></p>
-        </div>
-        <div class="flex-box">
-          <% post_image.tags.each do |tag| %>
-            <span>#<%= tag.tag_name %></span>
-          <% end %>
-          <span id="likes_buttons_<%= post_image.id %>">
-            <%= render partial: 'favorites/favorite-btn',locals: {post_image: post_image} %>
-          </spna>
+      <div class="card w-50 mx-auto mt-4 shadow-lg">
+        <a href="#">
+          <%= attachment_image_tag post_image, :image, format: 'jpeg', class: "card-img-top" %>
+        </a>
+        <div class="card-body">
+          <h2 class="card-title strong">
+            <a class="text-dark" href="/post_images/741">
+              <h2><%= link_to post_image.title, post_image_path(post_image) %></h2>
+            </a>
+            <span>投稿時間 <%= post_image.created_at.strftime("%Y-%m-%d %H:%M") %></span>
+          </h2>
+          <div class="content-box">
+            <p class="card-text"><%= post_image.body %></p>
+          </div>
+          <div class="flex-box">
+            <% post_image.tags.each do |tag| %>
+              <span>#<%= tag.tag_name %></span>
+            <% end %>
+            <span id="likes_buttons_<%= post_image.id %>">
+              <%= render partial: 'favorites/favorite-btn',locals: {post_image: post_image} %>
+            </spna>
+          </div>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
 </main>

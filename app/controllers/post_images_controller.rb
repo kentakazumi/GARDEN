@@ -19,12 +19,13 @@ class PostImagesController < ApplicationController
     if params[:tag_ids].present?
       @post_images = []
       params[:tag_ids].each do |id|
-        relations = PostImageTagRelation.where(tag_id: id)
+        relations = PostImageTagRelation.where(tag_id: id).reverse_order
         relations.each do |relation|
           post = PostImage.find(relation.post_image_id)
           @post_images.push(post)
         end
       end
+      @post_images=Kaminari.paginate_array(@post_images).page(params[:page])
     else
       @post_images = PostImage.all
       @post_images = PostImage.page(params[:page]).reverse_order

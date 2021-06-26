@@ -1,38 +1,36 @@
 <div align="center"><h1>題名:<%= @post_image.title %></h1></div>
- <main class="mb-auto">
+<main class="mb-auto">
   <div class="card-list-container py-5">
     <div class="card w-50 mx-auto mt-4 shadow-lg">
       <a href="#">
         <p><%= attachment_image_tag @post_image, :image, class: "image-size"  %></p>
       </a>
-       <% if @post_image.user_id == current_user.id %>
-          <span>投稿時間:<%= @post_image.created_at.strftime("%Y-%m-%d %H:%M")%>
+      <% if @post_image.user_id == current_user.id %>
+        <span>投稿時間:<%= @post_image.created_at.strftime("%Y-%m-%d %H:%M")%>
           <div id="likes_buttons_<%= @post_image.id %>">
             <%= render partial: 'favorites/favorite-btn',locals: {post_image: @post_image} %>
           </div>
-         </span>
-          <% @post_image.tags.each do |tag| %>
-            <span>#<%= tag.tag_name %></span>
-          <% end %>
-
+        </span>
+        <% @post_image.tags.each do |tag| %>
+          <span>#<%= tag.tag_name %></span>
+        <% end %>
       <% end %>
-        <div class="content-box">
-          <p><%= @post_image.body %></p>
-        </div>
-        <div align="right">
-            <p style="float: right"><%= link_to "Edit", edit_post_image_path(@post_image.id),class:"btn btn-sm btn-success" %></p>
-　　　　　  <p style="float: right"><%= link_to "Destroy", post_image_path(@post_image.id),class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "Are you sure？" %></p>
-　　　　</div>
-
-        <div id="comments_area">
-         <%= render partial: 'comments/index',locals: {post_image: @post_image } %>
-        </div>
-         <%= render partial: 'comments/form',locals: {post_image: @post_image, comment: @comment} %>
-        </div>
+      <div class="content-box">
+        <p><%= @post_image.body %></p>
       </div>
+      <div align="right">
+        <p style="float: right"><%= link_to "Edit", edit_post_image_path(@post_image.id),class:"btn btn-sm btn-success" %></p>
+　　　　<p style="float: right"><%= link_to "Destroy", post_image_path(@post_image.id),class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "Are you sure？" %></p>
+　　　</div>
+      <div id="comments_area">
+        <%= render partial: 'comments/index',locals: {post_image: @post_image } %>
+      </div>
+      <%= render partial: 'comments/form',locals: {post_image: @post_image, comment: @comment} %>
     </div>
   </div>
+</main.
 
-</main>
+  
+
 
 

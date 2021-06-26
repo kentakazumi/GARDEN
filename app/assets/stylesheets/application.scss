@@ -24,6 +24,8 @@
  @import './users';
  @import './post_images';
 
+
+
 body {
  margin: 0;
  background-color: #cccccc;
@@ -173,8 +175,6 @@ h3 {
   margin:0;
   padding:0;
   color: white;
-  /*文字の装飾は省略*/
-
   }
 
 
@@ -223,7 +223,6 @@ h3 {
   margin:0;
   padding:0;
   color: white;
-  /*文字の装飾は省略*/
 
   }
 
@@ -252,3 +251,10 @@ h3 {
   }
 
 
+.title a{
+ color: white;
+}
+
+.comment-box {
+ min-width: 100%;
+}
