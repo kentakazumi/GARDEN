@@ -11,7 +11,7 @@ class User < ApplicationRecord
    has_many :follower_user, through: :followed, source: :follower
    has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
    has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
-
+   validates :name, presence: true
   def follow(followed)
     follower.create(followed_id: followed.id)
      #通知の作成
@@ -32,6 +32,7 @@ class User < ApplicationRecord
           visited_id: followed.id,
           action: "follow"
         )
+
         notification.save if notification.valid?
   end
 

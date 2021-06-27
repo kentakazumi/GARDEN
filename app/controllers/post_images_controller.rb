@@ -36,13 +36,12 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.find(params[:id])
     @user = @post_image.user
     @comment = Comment.new
-
   end
-
 
   def edit
     @post_image = PostImage.find(params[:id])
     @user = @post_image.user
+    @tag  = @post_image.post_image_tag_relations.count == 0 ? nil : Tag.find(PostImageTagRelation.find_by(post_image_id: @post_image.id).tag_id)
     if @user != current_user
     redirect_to post_image_path
     end
@@ -51,6 +50,10 @@ class PostImagesController < ApplicationController
    def update
      @post_image = PostImage.find(params[:id])
      if @post_image.update(post_image_params)
+       @post_image.tags.delete_all
+       tag_list = params[:post_image][:tag_names].split(/[[:blank:]]+/).select(&:present?)
+       @post_image.save_tags(tag_list)
+
        flash[:notice] = "You have creatad book successfully."
        redirect_to  post_image_path(@post_image.id)
      else
@@ -111,7 +114,7 @@ class PostImagesController < ApplicationController
 
   private
   def post_image_params
-    params.require(:post_image).permit(:title, :body, :plant_name, :image, :created_at)
+    params.require(:post_image).permit(:title, :body, :plant_name, :image)
   end
 
   def tag_params
