@@ -10,3 +10,9 @@ ja:
     failure:
       user:
         invalid: NameもしくはPasswordを入力してください。
+
+  post_image:
+    image: "画像"
+    title: "題名"
+    tag_name: "タグ"
+    body: "説明"
