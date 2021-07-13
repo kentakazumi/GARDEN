@@ -20,7 +20,7 @@
            <% if user_signed_in? %>
              <li class='nav-item' >
                  <%= form_with url: post_images_search_path, local: true do |f| %>
-                 <%= f.text_field :tag_names %>
+                 <%= f.text_field(:tag_names, placeholder: "タグ検索") %>
                     <%= f.submit '検索' %>
                   <% end %>
              </li>
