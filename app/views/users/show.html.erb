@@ -21,25 +21,23 @@
         <a href="#">
           <%= attachment_image_tag post_image, :image, format: 'jpeg', class: "card-img-top" %>
         </a>
-        <div class="card-body">
-          <h2 class="card-title strong">
-            <a class="text-dark" href="/post_images/741">
-              <h2><%= link_to post_image.title, post_image_path(post_image) %></h2>
-            </a>
-            <span>投稿時間 <%= post_image.created_at.strftime("%Y-%m-%d %H:%M") %></span>
-          </h2>
-          <div class="content-box">
-            <p class="card-text"><%= post_image.body %></p>
-          </div>
-          <div class="flex-box">
-            <% post_image.tags.each do |tag| %>
-              <span>#<%= tag.tag_name %></span>
-            <% end %>
-            <span id="likes_buttons_<%= post_image.id %>">
-              <%= render partial: 'favorites/favorite-btn',locals: {post_image: post_image} %>
+      <div class="card-body">
+        <h2 class="card-title strong">
+          <a class="text-dark" href="/post_images/741">
+            <h2><%= link_to post_image.title, post_image_path(post_image) %></h2>
+          </a>
+          <span>投稿時間 <%= post_image.created_at.strftime("%Y-%m-%d %H:%M") %></span>
+        </h2>
+        <p class="card-text"><%= post_image.body %></p>
+         <div class="flex-box">
+           <% post_image.tags.each do |tag| %>
+             <span>#<%= tag.tag_name %></span>
+           <% end %>
+           <span id="likes_buttons_<%= post_image.id %>">
+             <%= render partial: 'favorites/favorite-btn',locals: {post_image: post_image} %>
             </spna>
           </div>
-        </div>
+      </div>
       </div>
     <% end %>
   </div>
