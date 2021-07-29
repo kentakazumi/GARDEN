@@ -18,8 +18,15 @@
                                 <div id="likes_buttons_<%= @post_image.id %>">
                                     <%= render partial: 'favorites/favorite-btn',locals: {post_image: @post_image} %>
                                 </div>
-                               
-                          　</span>
+                            </span>
+                          　<div class="clearfix w-100">
+                              <% if @post_image.user_id == current_user.id %>
+                              <p class="float-right">
+                              <%= link_to "Edit", edit_post_image_path(@post_image.id),class:"pull-right btn btn-sm btn-success" %>
+                              <%= link_to "Destroy", post_image_path(@post_image.id),class:"pull-right btn btn-sm btn-danger", method: :delete, "data-confirm" => "Are you sure？" %>
+                              <p>
+                              <% end %>
+                              </div>
                         </div>
 　　　　　　　　　　</div>
                 </div>
