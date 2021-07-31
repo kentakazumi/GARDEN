@@ -1,0 +1,7 @@
+<% unless current_user == @user %>
+    <% if current_user.following?(@user) %>
+      <span><%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-info" %></span>
+    <% else %>
+      <span><%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-success" %></span>
+  <% end %>
+  <% end %>
